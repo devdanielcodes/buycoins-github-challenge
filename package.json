@@ -1,0 +1,24 @@
+{
+  "name": "buycoins-github-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devdanielcodes/buycoins-github-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devdanielcodes/buycoins-github-challenge/issues"
+  },
+  "homepage": "https://github.com/devdanielcodes/buycoins-github-challenge#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "node-fetch": "^2.6.1"
+  }
+}
