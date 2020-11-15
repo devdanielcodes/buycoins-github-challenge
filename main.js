@@ -1,16 +1,15 @@
-//const axios = require('axios');
-const fetch = require('node-fetch');
+let axios = require('axios');
 
-const data = {
+let data = {
     "token": "dade8c42e3a99c1a273b8235276131343076c3d3",
     "username": "devdanielcodes"
 }
 
-const body = {
+let body = {
     "query": `
 
     query { 
-        user(login: "${data.username}"){
+        user(login: ${data.username}){
           name
           avatarUrl
           repositories(last: 20){
@@ -31,23 +30,14 @@ const body = {
             `
 }
 
-const header = {
+let header = {
     "Content-Type": "application/json",
     "Authentication": "bearer "+ data.token
 }
-let myData = {}
 
-fetch('https://api.github.com/graphql', {
-    method: "POST",
+axios.post('https://api.github.com/graphql', {
     headers: header,
     body: JSON.stringify(body)
 })
 .then((response) => console.log(response))
-/* .then((data) => {
-
-    console.log(data)
-   
-      myData = data
-      console.log(myData)
-}) */
 .catch((error) => console.log(JSON.stringify(error)))
