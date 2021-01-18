@@ -1,15 +1,14 @@
-let axios = require('axios');
+const fetch = require("node-fetch")
 
-let data = {
-    "token": "dade8c42e3a99c1a273b8235276131343076c3d3",
+const github_data = {
+    "token": "c6d8a9bcd8092fbb701a2e478da81371ccf79976",
     "username": "devdanielcodes"
 }
 
-let body = {
+const body = {
     "query": `
-
     query { 
-        user(login: ${data.username}){
+        user(login: ${github_data["username"]}){ 
           name
           avatarUrl
           repositories(last: 20){
@@ -21,23 +20,26 @@ let body = {
               }
               stargazerCount
               forkCount
-              updatedAt
+              createdAt
             }
           }
         }
       }
     
-            `
+        `
 }
 
-let header = {
+const url = 'https://api.github.com/graphql/'
+const header = {
     "Content-Type": "application/json",
-    "Authentication": "bearer "+ data.token
+    Authentication: "bearer " + github_data["token"]
 }
 
-axios.post('https://api.github.com/graphql', {
-    headers: header,
-    body: JSON.stringify(body)
+fetch(url, {
+  method: "GET",
+  headers: header,
+  body: JSON.stringify(body),
 })
-.then((response) => console.log(response))
-.catch((error) => console.log(JSON.stringify(error)))
+.then(response => JSON.stringify(response))
+.then(response => console.log(response))
+.catch(err => console.log(JSON.stringify(err)))
